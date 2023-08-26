@@ -1,5 +1,6 @@
 # AI Chatbot API
-
+[Postman Documentation](https://documenter.getpostman.com/view/22495929/2s9Y5YRh8F)  
+[Deployed Link](https://chatbot-api-y4tz.onrender.com/)
 - Index
   - [Tech Stack](#tech-stack)
   - [Steps to run locally](#steps-to-run-locally)
