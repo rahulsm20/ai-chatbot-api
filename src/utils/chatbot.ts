@@ -1,7 +1,7 @@
 import ChatbotModel from "../models/Chatbot.model";
 import { ChatbotAttributes } from "./types";
 
-export const createUser = async (chatbot: ChatbotAttributes) => {
+export const createChatbot = async (chatbot: ChatbotAttributes) => {
   try {
     const record = await ChatbotModel.create(chatbot);
     return record;
@@ -52,13 +52,13 @@ export const deleteChatbot = async(id:string)=>{
     try{
         const result= await ChatbotModel.destroy({where:{chatbotId:id}})
         if(result){
-            return "User deleted successfully"
+            return "Chatbot deleted successfully"
         }
         else{
-            return "Failed to delete user"
+            return "Failed to delete chatbot"
         }
     }
     catch(err){
-        throw new Error("Failed to delete user: "+err)
+        throw new Error("Failed to delete chatbot: "+err)
     }
 }

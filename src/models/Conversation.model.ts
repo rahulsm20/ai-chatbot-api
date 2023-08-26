@@ -26,7 +26,7 @@ ConversationModel.init(
   },
   end_user_id:{
     type:DataTypes.UUIDV4,
-    allowNull:true
+    allowNull:false
   }
 },{
   sequelize:client,

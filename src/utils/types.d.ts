@@ -1,9 +1,14 @@
 export interface User {
     id: string;
     email: string;
-    password: string;
+    name: string;
   }
 
+export interface SuperUser{
+  id:string;
+  email:string;
+  password:string;
+}
 export interface ConversationAttributes{
   conversation_id:string;
   chatbot_id:string;

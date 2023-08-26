@@ -8,8 +8,12 @@ import endUserRoutes from './routes/endusers'
 import serverless from 'serverless-http'
 import cors from 'cors'
 import 'dotenv/config'
+import { searchConversations } from "./controllers/search";
+import authMiddleware from "./middleware/auth";
+import cookieParser from 'cookie-parser'
 app.use(express.json());
 app.use(cors())
+app.use(cookieParser())
 
 client.sync().then(()=>{
   console.log('Connected to DB')
@@ -19,12 +23,14 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users",userRoutes)
-app.use("/chatbots",chatbotRoutes)
-app.use("/conversations",conversationRoutes)
-app.use("/endusers",endUserRoutes)
+app.use("/chatbots",authMiddleware,chatbotRoutes)
+app.use("/conversations",authMiddleware,conversationRoutes)
+app.use("/endusers",authMiddleware,endUserRoutes)
+app.get('/search',searchConversations);
 
-app.listen(5000, () => {
-  console.log("Listening on port 5000");
+const port = process.env.PORT
+app.listen(port, () => {
+  console.log(`Listening on port ${port}` );
 });
 
 export const handler = serverless(app);

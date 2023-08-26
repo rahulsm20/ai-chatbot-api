@@ -1,10 +1,14 @@
-import {DataTypes, Model } from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 import client from '../db/connect'
-import { User } from '../utils/types'
+// import { SuperUser } from '../utils/types'
+interface SuperUser{
+  id:string;
+  email:string;
+  password:string;
+}
+export default class SuperUserModel extends Model<SuperUser> {}
 
-export default class UserModel extends Model<User> {}
-
-UserModel.init(
+SuperUserModel.init(
   {
   id:{
     type:DataTypes.UUIDV4,
@@ -17,11 +21,11 @@ UserModel.init(
     unique:true,
     allowNull:false
   },
-  name:{
+  password:{
     type:DataTypes.STRING,
     allowNull:false
   }
 },{
   sequelize:client,
-  tableName:'users'
+  tableName:'super_users'
 })

@@ -1,8 +1,8 @@
-import ChatbotModel from "../models/Chatbot.model";
+import SuperUserModel from "../models/SuperUser.model";
 import UserModel from "../models/User.model";
-import { User } from "./types";
+import { SuperUser, User } from "./types";
 
-export const createUser = async (user: User) => {
+export const createUserHandler = async (user: User) => {
   try {
     const record = await UserModel.create(user);
     return record;
@@ -10,6 +10,16 @@ export const createUser = async (user: User) => {
     throw new Error(`Error creating user: ${err}`);
   }
 };
+
+export const createSuperUser = async(user:SuperUser)=>{
+  try{
+    const record = await SuperUserModel.create(user)
+    return record
+  }
+  catch(err){
+    throw new Error(`Error creating user: ${err}`)
+  }
+}
 
 export const getAllUsers = async () => {
   try {
@@ -49,7 +59,9 @@ export const updateUser = async (id: string, updateData: any) => {
 
 export const deleteUser = async (id: string) => {
   try {
-    const deletedUser = await UserModel.destroy({ where: { id: id } });
+    // console.log(id)
+    console.log(id)
+    const deletedUser = await UserModel.destroy({ where: { id:id } });
     if (deletedUser) {
       return "User deleted successfully";
     } else {
@@ -60,12 +72,17 @@ export const deleteUser = async (id: string) => {
   }
 };
 
-export const createNewChatbot=async(id:string)=>{
+export const findSuperUser = async(email:string)=>{
   try{
-    // const name 
-    const newChatbot = await ChatbotModel.create()
+    if(!email){
+      throw new Error("Please enter valid email")
+    }
+    const user  = await SuperUserModel.findOne({where:{email:email}})
+    if(user){
+      return user
+    }
   }
   catch(err){
-    throw new Error("Failed to create new chatbot: "+err)
+    throw new Error(""+err)
   }
 }
