@@ -1,6 +1,6 @@
 import ChatbotModel from "../models/Chatbot.model";
 import UserModel from "../models/User.model";
-import { User } from "../types";
+import { User } from "./types";
 
 export const createUser = async (user: User) => {
   try {

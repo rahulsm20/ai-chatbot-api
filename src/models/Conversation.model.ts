@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize'
 import client from '../db/connect'
-import { ConversationAttributes } from '../types'
+import { ConversationAttributes } from '../utils/types'
 import ChatbotModel from './Chatbot.model'
 
 export default class ConversationModel extends Model<ConversationAttributes> {

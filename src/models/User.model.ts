@@ -1,6 +1,6 @@
 import {DataTypes, Model } from 'sequelize'
 import client from '../db/connect'
-import { User } from '../types'
+import { User } from '../utils/types'
 
 export default class UserModel extends Model<User> {}
 

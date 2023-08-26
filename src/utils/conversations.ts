@@ -1,5 +1,5 @@
 import ConversationModel from "../models/Conversation.model";
-import { ConversationAttributes } from "../types";
+import { ConversationAttributes } from "./types";
 
 export const createConversation = async (conversation: ConversationAttributes) => {
   try {

@@ -1,5 +1,5 @@
 import ChatbotModel from "../models/Chatbot.model";
-import { ChatbotAttributes } from "../types";
+import { ChatbotAttributes } from "./types";
 
 export const createUser = async (chatbot: ChatbotAttributes) => {
   try {

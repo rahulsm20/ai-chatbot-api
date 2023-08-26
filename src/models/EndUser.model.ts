@@ -1,6 +1,6 @@
 import {DataTypes, Model } from 'sequelize'
 import client from '../db/connect'
-import { EndUser } from '../types'
+import { EndUser } from '../utils/types'
 
 export default class EndUserModel extends Model<EndUser> {}
 
